@@ -4,7 +4,7 @@ package io.lightplugins.vaulty;
  * @param amount       Amount modified by calling method
  * @param balance      New balance of account
  * @param type         Success or failure of call. Using Enum of ResponseType to determine valid
- *                     outcomes. test
+ *                     outcomes. test2
  * @param errorMessage Error message if the variable 'type' is ResponseType.FAILURE
  */
 public record VaultyResponse(double amount, double balance, ResponseType type, String errorMessage) {
