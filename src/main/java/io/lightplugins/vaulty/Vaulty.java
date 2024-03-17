@@ -5,6 +5,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Vaulty extends JavaPlugin {
 
+    // The main class
+
     public Vaulty plugin;
     private ServicesManager servicesManager;
 
