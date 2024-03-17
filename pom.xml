@@ -83,7 +83,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputFile>C:/Users/phili/Desktop/minecraft-server/plugins/${project.artifactId}-${project.version}-SNAPSHOT.jar</outputFile>
+                            <outputFile>./vaulty-dev-server/plugins/${project.artifactId}-${project.version}-SNAPSHOT.jar</outputFile>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
