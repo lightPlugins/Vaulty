@@ -1,5 +1,6 @@
 package io.lightplugins.vaulty;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -9,6 +10,7 @@ public class Vaulty extends JavaPlugin {
 
     public Vaulty plugin;
     private ServicesManager servicesManager;
+    public static String consolePrefix = "§c[Vaulty] §r";
 
     @Override
     public void onLoad() {
@@ -19,6 +21,7 @@ public class Vaulty extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         servicesManager = getServer().getServicesManager();
+        Bukkit.getConsoleSender().sendMessage(consolePrefix + "§cSuccessfully started Vault");
     }
 
     @Override
