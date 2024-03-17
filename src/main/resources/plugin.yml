@@ -1,0 +1,16 @@
+name: Vaulty
+author: lightPlugins
+version: 0.1.0
+main: de.lightplugins.vaulty.Vaulty
+api-version: 1.17
+depend: []
+softdepend: []
+loadbefore: []
+libraries: []
+#  - org.mariadb.jdbc:mariadb-java-client:2.7.4
+#  - net.kyori:adventure-api:4.11.0
+#  - com.zaxxer:HikariCP:5.1.0
+commands:
+  vaulty:
+    description: The root command for administrated things
+    aliases: []

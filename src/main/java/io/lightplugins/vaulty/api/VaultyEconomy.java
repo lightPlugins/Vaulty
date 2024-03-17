@@ -1,4 +1,4 @@
-package io.lightplugins.vaulty;
+package io.lightplugins.vaulty.api;
 
 import org.bukkit.OfflinePlayer;
 
