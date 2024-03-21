@@ -44,6 +44,10 @@ As mentioned above, nothing changes for you. You simply need to register the new
 from **Vaulty** instead of the one from Vault. Also, generate **the new methods** from the 
 `Economy interface`. Here's a quick guide on how to upgrade to Vaulty.
 
+> [!WARNING]
+> This guide is not intended for economy plugins like lightEconomy or TheNewEconomy. 
+> Please refer to the specific tutorial for those.
+
 First, import **Vaulty** to your project using JitPack
 
 ```xml
