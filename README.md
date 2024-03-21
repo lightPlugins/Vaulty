@@ -68,20 +68,73 @@ Now you just need to retrieve the `Economy.class` from Bukkit's ServiceManager.
 public static Economy econ = null;
 
 public void onEnable() {
+    // Load the Economy.class not in the onLoad() method.
     hookIntoVaulty();
 }
 
 private hookIntoVaulty() {
-    if (getServer().getPluginManager().getPlugin("Vaulty") != null) {
+    // Use 'Vault' because the plugin's name itself is still Vault, preventing other plugins from breaking.
+    if (getServer().getPluginManager().getPlugin("Vault") != null) { 
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if(rsp != null) {
         econ = rsp.getProvider();
+        return;
+        } else {
+          // Vaulty was found, but it does not appear to be an Economy plugin that uses the Economy.class.
+        }
     }
 }
 ```
 
+That's it. As you can see, it's just like before. Nothing has changed there. Now you can access 
+all the old methods, including the new ones, using econ again. Here are a few examples.
+
+> [!NOTE]
+> I've deprecated all the standard methods, so you can see what's old and what's new. So don't 
+> be surprised if your IDE complains about it. Deprecated methods won't be removed from the API for now.
+
+**Old Method** - Deposit money through the old Vault methods with OfflinePlayer. `@Deprecated`
 
 
+```java
+public void depositPlayerSomeMoney(OfflinePlayer offlinePlayer, double amount) {
 
+    EconomyResponse response = economy.depositPlayer(offlinePlayer, amount);
+    if(response.transactionSuccess()) {
+        // Successfully deposited some money to the OfflinePlayer
+    }
+}
+```
+**New Method** - Deposit money through the new Vaulty Methods with UUID´s and BigDecimals
+
+```java
+public void depositPlayerSomeMoney(UUID uuid, BigDecimal amount) {
+
+    EconomyResponse response = economy.depositPlayer(uuid, amount);
+    if(response.transactionSuccess()) {
+        // Successfully deposited some money to the OfflinePlayer
+    }
+}
+```
+**New Method** - Deposit money through the new Vaulty Methods with UUID´s and BigDecimals in Async
+```java
+public void depositPlayerSomeMoney(UUID uuid, BigDecimal amount) {
+
+    CompletableFuture<EconomyResponse> response = economy.depositPlayerAsync(uuid, amount);
+
+    response.thenApplyAsync(result -> {
+        // you can modify the result if you wish here
+        BigDecimal resultAmount = result.amount();
+        String errorMessage = result.errorMessage();
+        return result;
+    }).thenAcceptAsync(result -> {
+        // And then make final actions such as sending a message to the player.
+        if(result.transactionSuccess()) {
+            // Successfully deposited some money to the OfflinePlayer
+        }
+    }).join(); // add .join() to make the process synchronous
+}
+```
 
 
 
