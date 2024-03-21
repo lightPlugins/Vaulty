@@ -92,7 +92,7 @@ all the old methods, including the new ones, using econ again. Here are a few ex
 > [!NOTE]
 > I've deprecated all the standard methods, so you can see what's old and what's new. So don't 
 > be surprised if your IDE complains about it. Deprecated methods won't be removed from the API for now.
-
+## Some Examples
 **Old Method** - Deposit money through the old Vault methods with OfflinePlayer. `@Deprecated`
 
 
