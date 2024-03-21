@@ -17,7 +17,7 @@
 > Vaulty includes all standard methods from Vault itself, so all 
 > plugin developers who have been using Vault thus far only need 
 > to import the new Economy class from Vaulty.
-> Just plug and play**.
+> **Just plug and play**.
 
 
 # What is Vaulty?
