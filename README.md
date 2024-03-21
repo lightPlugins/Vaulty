@@ -22,8 +22,6 @@
 
 # What is Vaulty?
 
-<hr></hr>
-
 **Vaulty** is an enhanced version of the super old **VaultAPI** & **Vault**, encompassing all the methods that Vault provides by
 default. This means that no changes need to be made to existing plugins (exceptions being
 all Economy plugins). Additionally, it introduces new features such as **using BigDecimals
