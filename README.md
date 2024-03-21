@@ -46,9 +46,9 @@ from **Vaulty** instead of the one from Vault. Also, generate **the new methods*
 
 > [!WARNING]
 > This guide is not intended for economy plugins like lightEconomy or TheNewEconomy. 
-> Please refer to the specific tutorial for those.
+> Please refer to the specific wiki for those.
 
-First, import **Vaulty** to your project using JitPack
+Let's Begin. First, import **Vaulty** to your project using JitPack
 
 ```xml
 <repository>
@@ -62,6 +62,24 @@ First, import **Vaulty** to your project using JitPack
     <version>1.0.0</version>
 </dependency>
 ```
+Now you just need to retrieve the `Economy.class` from Bukkit's ServiceManager.
+
+```java
+public static Economy econ = null;
+
+public void onEnable() {
+    hookIntoVaulty();
+}
+
+private hookIntoVaulty() {
+    if (getServer().getPluginManager().getPlugin("Vaulty") != null) {
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        econ = rsp.getProvider();
+    }
+}
+```
+
+
 
 
 
