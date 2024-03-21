@@ -1,16 +1,16 @@
-name: Vaulty
+name: Vault # must be 'Vault', because other plugins would not load
+# name: Vaulty
 author: lightPlugins
-version: 0.1.0
-main: de.lightplugins.vaulty.Vaulty
-api-version: 1.17
+version: 1.0.0
+main: io.lightplugins.vaulty.Vaulty
+api-version: 1.13
 depend: []
 softdepend: []
 loadbefore: []
 libraries: []
-#  - org.mariadb.jdbc:mariadb-java-client:2.7.4
-#  - net.kyori:adventure-api:4.11.0
-#  - com.zaxxer:HikariCP:5.1.0
+load: startup
 commands:
-  vaulty:
+  vaulty-info:
     description: The root command for administrated things
-    aliases: []
+  vaulty-convert:
+    description: Convert economy accounts from A to B

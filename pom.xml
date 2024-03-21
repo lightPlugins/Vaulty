@@ -59,14 +59,6 @@
             <version>2.0.5</version>
         </dependency>
 
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
-            <version>1.20-R0.1-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>provided</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
