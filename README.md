@@ -38,5 +38,28 @@ aiming to make the transition as smooth as possible for other developers and the
 plugins. Nothing has changed for such users. Ultimately, only new features have been added 
 to cover today's standards and fulfill the community's long-awaited desires.
 
+# Upgrade to Vaulty
+
+As mentioned above, nothing changes for you. You simply need to register the new `Economy.class` 
+from **Vaulty** instead of the one from Vault. Also, generate **the new methods** from the 
+`Economy interface`. Here's a quick guide on how to upgrade to Vaulty.
+
+First, import **Vaulty** to your project using JitPack
+
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+    <groupId>com.github.lightPlugins</groupId>
+    <artifactId>Vaulty</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+
+
 
 
