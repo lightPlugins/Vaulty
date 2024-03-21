@@ -6,11 +6,12 @@
 <div align="center">Modern up to date abstract library with UUID´s & BigDeciamls and CompletableFutures</div>
 
 <div align="center">
-<hr></hr>
 
 ![Discord](https://img.shields.io/discord/772495950127038465?style=flat&logo=discord&label=Discord)
 ![Spiget Downloads](https://img.shields.io/spiget/downloads/83862)
 [![Jitpack](https://img.shields.io/jitpack/version/com.github.lightplugins/Vaulty)](https://jitpack.io/#lightPlugins/Vaulty)
+
+</div>
 
 > [!IMPORTANT]
 > Vaulty includes all standard methods from Vault itself, so all 
@@ -30,4 +31,3 @@ instead of doubles**, employing **UUIDs instead of Strings or OfflinePlayers**, 
 **asynchronous methods for all new functions**. There are also new methods, for example, to
 retrieve all Economy Account holders from the database as a HashMap.
 
-</div>
