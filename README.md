@@ -29,3 +29,14 @@ instead of doubles**, employing **UUIDs instead of Strings or OfflinePlayers**, 
 **asynchronous methods for all new functions**. There are also new methods, for example, to
 retrieve all Economy Account holders from the database as a HashMap.
 
+# Why you should start using Vaulty today?
+
+The original Vault plugin is out of date and no longer keeping pace with current standards. 
+For three years, the community has been desperately urging the developer to bring it 
+up to date, but to no avail. Here comes Vaulty into play. It is based on Vault, 
+aiming to make the transition as smooth as possible for other developers and their existing 
+plugins. Nothing has changed for such users. Ultimately, only new features have been added 
+to cover today's standards and fulfill the community's long-awaited desires.
+
+
+
