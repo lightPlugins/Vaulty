@@ -120,16 +120,16 @@ public class VaultInfoCommand implements CommandExecutor {
         sender.sendMessage(Vaulty.consolePrefix + "Version of Vaulty: " + Vaulty.getInstance().getDescription().getVersion());
         sender.sendMessage(Vaulty.consolePrefix + "--------------------------------------------------");
         sender.sendMessage(Vaulty.consolePrefix + "Economy plugins found: " + registeredEcons);
-        sender.sendMessage(Vaulty.consolePrefix + "Primary Economy plugin for Vault: " + (econVault != null ? econVault.getName() : "None"));
         sender.sendMessage(Vaulty.consolePrefix + "Primary Economy plugin for Vaulty: " + (econ != null ? econ.getName() : "None"));
+        sender.sendMessage(Vaulty.consolePrefix + "Primary Economy plugin for Vault: " + (econVault != null ? econVault.getName() : "None"));
         sender.sendMessage(Vaulty.consolePrefix + "--------------------------------------------------");
         sender.sendMessage(Vaulty.consolePrefix + "Permission plugins found: " + registeredPerms);
+        sender.sendMessage(Vaulty.consolePrefix + "Primary Permission plugin for Vaulty: " + (perm != null ? perm.getName() : "None"));
         sender.sendMessage(Vaulty.consolePrefix + "Primary Permission plugin for Vault: " + (permVault != null ? permVault.getName() : "None"));
-        sender.sendMessage(Vaulty.consolePrefix + "Primary Permission plugin for Vault: " + (perm != null ? perm.getName() : "None"));
         sender.sendMessage(Vaulty.consolePrefix + "--------------------------------------------------");
         sender.sendMessage(Vaulty.consolePrefix + "Chat plugins found: " + registeredChats);
-        sender.sendMessage(Vaulty.consolePrefix + "Primary Chat plugin for Vaulty: " + (chatVault != null ? chatVault.getName() : "None"));
-        sender.sendMessage(Vaulty.consolePrefix + "Primary Chat plugin for Vault: " + (chat != null ? chat.getName() : "None"));
+        sender.sendMessage(Vaulty.consolePrefix + "Primary Chat plugin for Vaulty: " + (chat != null ? chat.getName() : "None"));
+        sender.sendMessage(Vaulty.consolePrefix + "Primary Chat plugin for Vault: " + (chatVault != null ? chatVault.getName() : "None"));
         sender.sendMessage(Vaulty.consolePrefix + "--------------------------------------------------");
 
         return false;
