@@ -20,13 +20,6 @@
 > BigDecimals, and Async functions, provided by Vaulty.
 > **Just plug and play**.
 
-> [!IMPORTANT]
-> Vaulty is 100% compatible with ALL plugins, including all economy systems available.
-> It automatically downloads the legacy Vault classes and makes them available for
-> other plugins. This has been extensively tested and works flawlessly without any issues.
-> **Just plug and play**.
-
-
 # What is Vaulty?
 
 **Vaulty** is an enhanced version of the super old **VaultAPI** & **Vault**, 
@@ -36,6 +29,12 @@ Additionally, it introduces new features such as **using BigDecimals
 instead of doubles**, employing **UUIDs instead of Strings or OfflinePlayers**, and providing
 **asynchronous methods for all new functions**. There are also new methods, for example, to
 retrieve all Economy Account holders from the database as a HashMap.
+
+> [!IMPORTANT]
+> Vaulty is 100% compatible with ALL plugins, including all economy systems available.
+> It automatically downloads the legacy Vault classes and makes them available for
+> other plugins. This has been extensively tested and works flawlessly without any issues.
+> **Just plug and play**.
 
 # Why you should replace Vault with Vaulty today?
 
@@ -51,6 +50,11 @@ to cover today's standards and fulfill the community's long-awaited desires.
 As mentioned above, **nothing changes for you**. Just continue using your `VaultAPI`. **But** if, however, you wish to utilize the new methods, 
 you must access `Vaulty's economy implementer`. Here's a brief guide on how to do so.
 It's exactly the same as the old Vault API does.
+
+> [!CAUTION]
+> To be able to utilize Vaulty's new methods, an **economy plugin supporting 
+> Vaulty must be installed**. Are you an economy plugin developer? If so, 
+> take a look at this guide on how to integrate Vaulty into your economy plugin. Its super easy, i swear !
 
 Let's Begin. First, import **Vaulty** to your project using JitPack
 
@@ -89,6 +93,9 @@ private hookIntoVault() {
         if(rspVaulty != null) {
         vaultyEcon = rspVaulty.getProvider();
         return;
+        } else {
+            // There is no economy plugin currently installed that supports Vaulty. 
+            // You should ask the developer if they can add Vaulty methods to their plugin.
         }
 
         // This is the old method you're accustomed to for accessing the Vault API, as you've been doing in the past years.
