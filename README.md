@@ -52,22 +52,27 @@ specific currencies and modify their values. However, a condition for this is an
 that supports both Vaulty and multi-currency functionality.
 
 ```java
+//  Check if the target economy plugin supports multi-currency functionality 
+//  before proceeding to use this interface.
+    boolean hasVirtualCurrencySupport();
+
+
 // a complete List of the available currencies provided by an economy plugin.
-    List<String> virtualCurrenciesGetList();
+    List<String> virtualCurrencyGetList();
 // get the displayname of the target currencie
-    String virtualCurrenciesGetName(String currencyID);
+    String virtualCurrencyGetName(String currencyID);
 // check, if the target player has an account for this currency
-    boolean virtualCurrenciesHas(UUID playerName, String currencyID);
+    boolean virtualCurrencyHas(UUID playerName, String currencyID);
 // Same as above, but async
-    CompletableFuture<Boolean> virtualCurrenciesHasAsync(UUID playerName, String currencyID);
+    CompletableFuture<Boolean> virtualCurrencyHasAsync(UUID playerName, String currencyID);
 // deposit values to the target currency account
-    VaultyResponse virtualCurrenciesDeposit(UUID playerName, String currencyID, BigDecimal amount);
+    VaultyResponse virtualCurrencyDeposit(UUID playerName, String currencyID, BigDecimal amount);
 // Same as above, but async
-    CompletableFuture<VaultyResponse> virtualCurrenciesDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
+    CompletableFuture<VaultyResponse> virtualCurrencyDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
 // withdraw values from the target currency account
-    VaultyResponse virtualCurrenciesWithdraw(UUID playerName, String currencyID, BigDecimal amount);
+    VaultyResponse virtualCurrencyWithdraw(UUID playerName, String currencyID, BigDecimal amount);
 // Same as above, but async
-    CompletableFuture<VaultyResponse> virtualCurrenciesWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
+    CompletableFuture<VaultyResponse> virtualCurrencyWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
 ```
 
 # Upgrade to Vaulty

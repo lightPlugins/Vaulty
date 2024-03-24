@@ -37,7 +37,7 @@ public interface VaultyEconomy {
      * Returns true if the given implementation supports banks.
      * @return true if the implementation supports banks
      */
-    boolean hasCustomCurrencySupport();
+    boolean hasVirtualCurrencySupport();
 
     /**
      * Some economy plugins round off after a certain number of digits.
@@ -464,20 +464,20 @@ public interface VaultyEconomy {
      */
 
 
-    List<String> virtualCurrenciesGetList();
+    List<String> virtualCurrencyGetList();
 
-    String virtualCurrenciesGetName(String currencyID);
+    String virtualCurrencyGetName(String currencyID);
 
-    boolean virtualCurrenciesHas(UUID playerName, String currencyID);
+    boolean virtualCurrencyHas(UUID playerName, String currencyID);
 
-    CompletableFuture<Boolean> virtualCurrenciesHasAsync(UUID playerName, String currencyID);
+    CompletableFuture<Boolean> virtualCurrencyHasAsync(UUID playerName, String currencyID);
 
-    VaultyResponse virtualCurrenciesDeposit(UUID playerName, String currencyID, BigDecimal amount);
+    VaultyResponse virtualCurrencyDeposit(UUID playerName, String currencyID, BigDecimal amount);
 
-    CompletableFuture<VaultyResponse> virtualCurrenciesDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
+    CompletableFuture<VaultyResponse> virtualCurrencyDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
 
-    VaultyResponse virtualCurrenciesWithdraw(UUID playerName, String currencyID, BigDecimal amount);
+    VaultyResponse virtualCurrencyWithdraw(UUID playerName, String currencyID, BigDecimal amount);
 
-    CompletableFuture<VaultyResponse> virtualCurrenciesWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
+    CompletableFuture<VaultyResponse> virtualCurrencyWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
 
 }
