@@ -29,6 +29,12 @@ public interface Economy {
      boolean hasBankSupport();
 
     /**
+     * Returns true if the given implementation supports banks.
+     * @return true if the implementation supports banks
+     */
+    boolean hasCustomCurrencySupport();
+
+    /**
      * Some economy plugins round off after a certain number of digits.
      * This function returns the number of digits the plugin keeps
      * or -1 if no rounding occurs.
@@ -673,4 +679,27 @@ public interface Economy {
      * @return a CompletableFuture that will contain the list of UUIDs for all banks
      */
      CompletableFuture<List<UUID>> getBanksAsUUIDAsync();
+
+
+    /**
+     * Custom currencies
+     */
+
+
+    List<String> virtualCurrenciesGetList();
+
+    String virtualCurrenciesGetName(String currencyID);
+
+    boolean virtualCurrenciesHas(UUID playerName, String currencyID);
+
+    CompletableFuture<Boolean> virtualCurrenciesHasAsync(UUID playerName, String currencyID);
+
+    EconomyResponse virtualCurrenciesDeposit(UUID playerName, String currencyID, BigDecimal amount);
+
+    CompletableFuture<EconomyResponse> virtualCurrenciesDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
+
+    EconomyResponse virtualCurrenciesWithdraw(UUID playerName, String currencyID, BigDecimal amount);
+
+    CompletableFuture<EconomyResponse> virtualCurrenciesWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
+
 }

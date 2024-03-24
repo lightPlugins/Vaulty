@@ -36,12 +36,12 @@ public class VaultInfoCommand implements CommandExecutor {
 
         for (RegisteredServiceProvider<Economy> econ : econs) {
             Economy e = econ.getProvider();
-            registeredEcons.append(e.getName()).append(", ");
+            registeredEcons.append(e.getName()).append(" ");
         }
 
         for (RegisteredServiceProvider<net.milkbowl.vault.economy.Economy> econ : econsVault) {
             net.milkbowl.vault.economy.Economy e = econ.getProvider();
-            registeredEcons.append(e.getName()).append(", ");
+            registeredEcons.append(e.getName()).append(" ");
         }
 
         StringBuilder registeredPerms = new StringBuilder();
@@ -53,12 +53,12 @@ public class VaultInfoCommand implements CommandExecutor {
 
         for (RegisteredServiceProvider<net.milkbowl.vault.permission.Permission> perm : permsVault) {
             net.milkbowl.vault.permission.Permission p = perm.getProvider();
-            registeredPerms.append(p.getName()).append(", ");
+            registeredPerms.append(p.getName()).append(" ");
         }
 
         for (RegisteredServiceProvider<Permission> perm : perms) {
             Permission p = perm.getProvider();
-            registeredPerms.append(p.getName()).append(", ");
+            registeredPerms.append(p.getName()).append(" ");
         }
 
         StringBuilder registeredChats = new StringBuilder();
@@ -70,12 +70,12 @@ public class VaultInfoCommand implements CommandExecutor {
 
         for (RegisteredServiceProvider<Chat> chat : chats) {
             Chat c = chat.getProvider();
-            registeredChats.append(c.getName()).append(", ");
+            registeredChats.append(c.getName()).append(" ");
         }
 
         for (RegisteredServiceProvider<net.milkbowl.vault.chat.Chat> chat : chatsVault) {
             net.milkbowl.vault.chat.Chat c = chat.getProvider();
-            registeredChats.append(c.getName()).append(", ");
+            registeredChats.append(c.getName()).append(" ");
         }
 
         RegisteredServiceProvider<Economy> rsp =
