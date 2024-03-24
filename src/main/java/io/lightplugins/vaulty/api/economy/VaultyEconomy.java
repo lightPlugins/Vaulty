@@ -468,9 +468,9 @@ public interface VaultyEconomy {
 
     String virtualCurrencyGetName(String currencyID);
 
-    boolean virtualCurrencyHas(UUID playerName, String currencyID);
+    BigDecimal virtualCurrencyBalance(UUID playerName, String currencyID);
 
-    CompletableFuture<Boolean> virtualCurrencyHasAsync(UUID playerName, String currencyID);
+    CompletableFuture<BigDecimal> virtualCurrencyBalanceAsync(UUID playerName, String currencyID);
 
     VaultyResponse virtualCurrencyDeposit(UUID playerName, String currencyID, BigDecimal amount);
 

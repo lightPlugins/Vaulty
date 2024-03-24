@@ -49,7 +49,7 @@ to cover today's standards and fulfill the community's long-awaited desires.
 
 Vaulty also comes with a MultiCurrency interface, which allows other plugins to inquire about 
 specific currencies and modify their values. However, a condition for this is an economy plugin 
-that supports both Vaulty and multi-currency functionality.
+that supports both Vaulty and multi-currency functionality. This is also provided in the `VaultyEconomy` Object.
 
 ```java
 //  Check if the target economy plugin supports multi-currency functionality 
@@ -61,10 +61,10 @@ that supports both Vaulty and multi-currency functionality.
     List<String> virtualCurrencyGetList();
 // get the displayname of the target currencie
     String virtualCurrencyGetName(String currencyID);
-// check, if the target player has an account for this currency
-    boolean virtualCurrencyHas(UUID playerName, String currencyID);
+// return the balance of the target currency account
+    BigDecimal virtualCurrencyBalance(UUID playerName, String currencyID);
 // Same as above, but async
-    CompletableFuture<Boolean> virtualCurrencyHasAsync(UUID playerName, String currencyID);
+    CompletableFuture<BigDecimal> virtualCurrencyBalanceAsync(UUID playerName, String currencyID);
 // deposit values to the target currency account
     VaultyResponse virtualCurrencyDeposit(UUID playerName, String currencyID, BigDecimal amount);
 // Same as above, but async
