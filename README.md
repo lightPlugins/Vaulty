@@ -54,7 +54,7 @@ It's exactly the same as the old Vault API does.
 > [!CAUTION]
 > To be able to utilize Vaulty's new methods, an **economy plugin supporting 
 > Vaulty must be installed**. Are you an economy plugin developer? If so, 
-> take a look at this guide on how to integrate Vaulty into your economy plugin. Its super easy, i swear !
+> take a look at this guide <comming soon> on how to integrate Vaulty into your economy plugin. Its super easy, i swear !
 
 Let's Begin. First, import **Vaulty** to your project using JitPack
 
