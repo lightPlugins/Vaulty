@@ -11,6 +11,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -77,16 +78,16 @@ public class VaultConvertCommand implements CommandExecutor, TabCompleter {
                     "This may take some time to convert, expect server lag.");
 
             for (OfflinePlayer op : Bukkit.getServer().getOfflinePlayers()) {
-                if (econVaulty1.hasAccount(op)) {
-                    if (econVaulty2.hasAccount(op)) {
+                if (econVaulty1.hasAccount(op.getUniqueId())) {
+                    if (econVaulty2.hasAccount(op.getUniqueId())) {
                         continue;
                     }
-                    econVaulty2.createPlayerAccount(op);
-                    double diff = econVaulty1.getBalance(op) - econVaulty2.getBalance(op);
+                    econVaulty2.createPlayerAccount(op.getUniqueId());
+                    double diff = econVaulty1.getBalance(op.getUniqueId()).doubleValue() - econVaulty2.getBalance(op.getUniqueId()).doubleValue();
                     if (diff > 0) {
-                        econVaulty2.depositPlayer(op, diff);
+                        econVaulty2.depositPlayer(op.getUniqueId(), new BigDecimal(diff));
                     } else if (diff < 0) {
-                        econVaulty2.withdrawPlayer(op, -diff);
+                        econVaulty2.withdrawPlayer(op.getUniqueId(), new BigDecimal(diff));
                     }
                 }
             }
