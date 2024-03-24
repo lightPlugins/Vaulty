@@ -1,7 +1,7 @@
 package io.lightplugins.vaulty.commands;
 
 import io.lightplugins.vaulty.Vaulty;
-import io.lightplugins.vaulty.api.economy.Economy;
+import io.lightplugins.vaulty.api.economy.VaultyEconomy;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -36,8 +36,8 @@ public class VaultConvertCommand implements CommandExecutor, TabCompleter {
 
         if(args[0].equalsIgnoreCase("vaulty")) {
 
-            Collection<RegisteredServiceProvider<Economy>> econsVaulty =
-                    Vaulty.getInstance().getServer().getServicesManager().getRegistrations(Economy.class);
+            Collection<RegisteredServiceProvider<VaultyEconomy>> econsVaulty =
+                    Vaulty.getInstance().getServer().getServicesManager().getRegistrations(VaultyEconomy.class);
 
             if(econsVaulty.size() < 2) {
                 sender.sendMessage(Vaulty.consolePrefix +
@@ -45,11 +45,11 @@ public class VaultConvertCommand implements CommandExecutor, TabCompleter {
                 return false;
             }
 
-            Economy econVaulty1 = null;
-            Economy econVaulty2 = null;
+            VaultyEconomy econVaulty1 = null;
+            VaultyEconomy econVaulty2 = null;
             StringBuilder economiesVaulty = new StringBuilder();
 
-            for (RegisteredServiceProvider<Economy> econ : econsVaulty) {
+            for (RegisteredServiceProvider<VaultyEconomy> econ : econsVaulty) {
                 String econName = econ.getProvider().getName().replace(" ", "");
                 if(econName.equals(args[0])) {
                     econVaulty1 = econ.getProvider();
@@ -159,8 +159,8 @@ public class VaultConvertCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        Collection<RegisteredServiceProvider<Economy>> econsVaulty =
-                Vaulty.getInstance().getServer().getServicesManager().getRegistrations(Economy.class);
+        Collection<RegisteredServiceProvider<VaultyEconomy>> econsVaulty =
+                Vaulty.getInstance().getServer().getServicesManager().getRegistrations(VaultyEconomy.class);
 
         Collection<RegisteredServiceProvider<net.milkbowl.vault.economy.Economy>> econsVault =
                 Vaulty.getInstance().getServer().getServicesManager().getRegistrations(net.milkbowl.vault.economy.Economy.class);
@@ -172,7 +172,7 @@ public class VaultConvertCommand implements CommandExecutor, TabCompleter {
             StringBuilder sb = new StringBuilder();
 
             if(args[0].equalsIgnoreCase("vaulty")) {
-                for(RegisteredServiceProvider<Economy> econ : econsVaulty) {
+                for(RegisteredServiceProvider<VaultyEconomy> econ : econsVaulty) {
                     if(econ != null) {
                         sb.append(econ.getProvider().getName().replace(" ", "")).append(", ");
                     }

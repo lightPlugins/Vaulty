@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-public interface Economy {
+public interface VaultyEconomy {
 
     /**
      * Checks if economy method is enabled.

@@ -2,7 +2,7 @@ package io.lightplugins.vaulty.commands;
 
 import io.lightplugins.vaulty.Vaulty;
 import io.lightplugins.vaulty.api.chat.Chat;
-import io.lightplugins.vaulty.api.economy.Economy;
+import io.lightplugins.vaulty.api.economy.VaultyEconomy;
 import io.lightplugins.vaulty.api.permission.Permission;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,14 +28,14 @@ public class VaultInfoCommand implements CommandExecutor {
             return false;
         }
         StringBuilder registeredEcons = new StringBuilder();
-        Collection<RegisteredServiceProvider<Economy>> econs =
-                Vaulty.getInstance().getServer().getServicesManager().getRegistrations(Economy.class);
+        Collection<RegisteredServiceProvider<VaultyEconomy>> econs =
+                Vaulty.getInstance().getServer().getServicesManager().getRegistrations(VaultyEconomy.class);
 
         Collection<RegisteredServiceProvider<net.milkbowl.vault.economy.Economy>> econsVault =
                 Vaulty.getInstance().getServer().getServicesManager().getRegistrations(net.milkbowl.vault.economy.Economy.class);
 
-        for (RegisteredServiceProvider<Economy> econ : econs) {
-            Economy e = econ.getProvider();
+        for (RegisteredServiceProvider<VaultyEconomy> econ : econs) {
+            VaultyEconomy e = econ.getProvider();
             registeredEcons.append(e.getName()).append(" ");
         }
 
@@ -78,11 +78,11 @@ public class VaultInfoCommand implements CommandExecutor {
             registeredChats.append(c.getName()).append(" ");
         }
 
-        RegisteredServiceProvider<Economy> rsp =
-                Vaulty.getInstance().getServer().getServicesManager().getRegistration(Economy.class);
+        RegisteredServiceProvider<VaultyEconomy> rsp =
+                Vaulty.getInstance().getServer().getServicesManager().getRegistration(VaultyEconomy.class);
         RegisteredServiceProvider<net.milkbowl.vault.economy.Economy> rspVault =
                 Vaulty.getInstance().getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-        Economy econ = null;
+        VaultyEconomy econ = null;
         net.milkbowl.vault.economy.Economy econVault = null;
         if (rsp != null) {
             econ = rsp.getProvider();

@@ -48,7 +48,7 @@ to cover today's standards and fulfill the community's long-awaited desires.
 
 # Upgrade to Vaulty
 
-As mentioned above, **nothing changes for you**. If, however, you wish to utilize the new methods, 
+As mentioned above, **nothing changes for you**. Just continue using your `VaultAPI`. **But** if, however, you wish to utilize the new methods, 
 you must access `Vaulty's economy implementer`. Here's a brief guide on how to do so.
 It's exactly the same as the old Vault API does.
 
@@ -71,20 +71,32 @@ Now, you just need to retrieve the Vaulty `Economy.class` from Bukkit's ServiceM
 Make sure you ask for the plugin **Vault** and not *Vaulty* itself and use the `Economy.class` from Vaulty.
 
 ```java
-public static Economy vaultyEcon = null;
+public static VaultyEconomy vaultyEcon = null;  // The new Vaulty Economy implementer
+public static Economy econ = null; // Your old VaultAPI implementer. You can still use them with Vaulty
 
 public void onEnable() {
-    // Load the Economy.class not in the onLoad() method.
-    hookIntoVaulty();
+    hookIntoVault();
 }
 
-private hookIntoVaulty() {
+private hookIntoVault() {
     // Use 'Vault' because the plugin's name itself is still Vault, preventing other plugins from breaking.
     if (getServer().getPluginManager().getPlugin("Vault") != null) {
-        //                                                               This must be the Vaultys Economy.class
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        
+        // This is the new Vaultys Economy Implementer. You can add this to your vaultHook method.
+        RegisteredServiceProvider<VaultyEconomy> rspVaulty = 
+            getServer().getServicesManager().getRegistration(VaultyEconomy.class);
+        
+        if(rspVaulty != null) {
+        vaultyEcon = rspVaulty.getProvider();
+        return;
+        }
+
+        // This is the old method you're accustomed to for accessing the Vault API, as you've been doing in the past years.
+        RegisteredServiceProvider<Economy> rsp = 
+            getServer().getServicesManager().getRegistration(Economy.class);
+        
         if(rsp != null) {
-        vaultyEcon = rsp.getProvider();
+        econ = rsp.getProvider();
         return;
         }
     }
@@ -92,24 +104,45 @@ private hookIntoVaulty() {
 ```
 
 That's it. As you can see, it's just like before. Nothing has changed there. Now you can access 
-all the new methods, provided by Vaulty. Here are a few examples how to use the new methods.
+all the new methods, provided by Vaulty. Here are a few examples how to use the new methods with `vaultyEcon`.
 
-**Example #1** - Deposit money through the new Vaulty Methods with UUID´s and BigDecimals
+### **Examples for `synchronous`**
+
 
 ```java
-public void depositPlayerSomeMoney(UUID uuid, BigDecimal amount) {
+public void depositPlayerSomeMoney(UUID uuid, double amount) {
+    
+    BigDecimal depositAmount = new BigDecimal(amount);
+    //  Here you can do some roundings or else.
 
-    EconomyResponse response = economy.depositPlayer(uuid, amount);
+    EconomyResponse response = vaultyEcon.depositPlayer(uuid, depositAmount);
     if(response.transactionSuccess()) {
         // Successfully deposited some money to the OfflinePlayer
     }
 }
+
+public void withdrawPlayerSomeMoney(UUID uuid, BigDecimal amount) {
+
+    EconomyResponse response = vaultyEcon.withdrawPlayer(uuid, amount);
+    if(response.transactionSuccess()) {
+        // Successfully deposited some money to the OfflinePlayer
+    }
+}
+
+public double getBalance(UUID uuid) {
+    
+    BigDecimal bd = vaultyEcon.getBalance(uuid);
+    return bd != null ? bd.doubleValue : 0.00;
+}
+
+// and so on ...
 ```
-**Example #2** - Deposit money through the new Vaulty Methods with UUID´s and BigDecimals
+### **Examples for `asynchronous`**
+
 ```java
 public void depositPlayerSomeMoney(UUID uuid, BigDecimal amount) {
 
-    CompletableFuture<EconomyResponse> response = economy.depositPlayerAsync(uuid, amount);
+    CompletableFuture<EconomyResponse> response = vaultyEcon.depositPlayerAsync(uuid, amount);
 
     response.thenApplyAsync(result -> {
         // you can modify the result if you wish here
@@ -121,7 +154,19 @@ public void depositPlayerSomeMoney(UUID uuid, BigDecimal amount) {
         if(result.transactionSuccess()) {
             // Successfully deposited some money to the OfflinePlayer
         }
-    }).join(); // add .join() to make the process synchronous
+    }) // add .join() to make the process synchronous later
+}
+
+public CompletableFuture<Double> getBalanceFromPlayerForExample(UUID uuid) {
+
+    CompletableFuture<BigDecimal> response = vaultyEcon.getBalanceAsync(uuid);
+
+    // Mapping the BigDecimal result to Double.
+    // You can use lambda expression here -> (BigDecimal::doubleValue)
+    return response.thenApplyAsync(result -> result.doubleValue())
+            .exceptionally(ex -> {
+                return 0.0; // Default value in case of failure.
+            });
 }
 ```
 
