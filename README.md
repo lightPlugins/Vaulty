@@ -45,6 +45,31 @@ aiming to make the transition as smooth as possible for other developers and the
 plugins. Nothing has changed for such users. Ultimately, only new features have been added 
 to cover today's standards and fulfill the community's long-awaited desires.
 
+# Vaulty and MultiCurrency
+
+Vaulty also comes with a MultiCurrency interface, which allows other plugins to inquire about 
+specific currencies and modify their values. However, a condition for this is an economy plugin 
+that supports both Vaulty and multi-currency functionality.
+
+```java
+// a complete List of the available currencies provided by an economy plugin.
+    List<String> virtualCurrenciesGetList();
+// get the displayname of the target currencie
+    String virtualCurrenciesGetName(String currencyID);
+// check, if the target player has an account for this currency
+    boolean virtualCurrenciesHas(UUID playerName, String currencyID);
+// Same as above, but async
+    CompletableFuture<Boolean> virtualCurrenciesHasAsync(UUID playerName, String currencyID);
+// deposit values to the target currency account
+    VaultyResponse virtualCurrenciesDeposit(UUID playerName, String currencyID, BigDecimal amount);
+// Same as above, but async
+    CompletableFuture<VaultyResponse> virtualCurrenciesDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
+// withdraw values from the target currency account
+    VaultyResponse virtualCurrenciesWithdraw(UUID playerName, String currencyID, BigDecimal amount);
+// Same as above, but async
+    CompletableFuture<VaultyResponse> virtualCurrenciesWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
+```
+
 # Upgrade to Vaulty
 
 As mentioned above, **nothing changes for you**. Just continue using your `VaultAPI`. **But** if, however, you wish to utilize the new methods, 
@@ -176,6 +201,8 @@ public CompletableFuture<Double> getBalanceFromPlayerForExample(UUID uuid) {
             });
 }
 ```
+
+
 
 
 
