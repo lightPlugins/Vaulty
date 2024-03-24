@@ -71,8 +71,8 @@ Let's Begin. First, import **Vaulty** to your project using JitPack
 </dependency>
 ```
 
-Now, you just need to retrieve the Vaulty `Economy.class` from Bukkit's ServiceManager. 
-Make sure you ask for the plugin **Vault** and not *Vaulty* itself and use the `Economy.class` from Vaulty.
+Now, you just need to retrieve the Vaulty `VaultyEconomy.class` from Bukkit's ServiceManager. 
+Make sure you ask for the plugin **Vault** and not *Vaulty* itself and use the `VaultyEconomy.class` from Vaulty.
 
 ```java
 public static VaultyEconomy vaultyEcon = null;  // The new Vaulty Economy implementer
