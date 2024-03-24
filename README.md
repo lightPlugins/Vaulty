@@ -162,7 +162,7 @@ public void withdrawPlayerSomeMoney(UUID uuid, BigDecimal amount) {
 
     VaultyResponse response = vaultyEcon.withdrawPlayer(uuid, amount);
     if(response.transactionSuccess()) {
-        // Successfully withdrawed some money
+        // Successfully withdrew some money
     }
 }
 
