@@ -1,7 +1,5 @@
 package io.lightplugins.vaulty.api.economy;
 
-import org.bukkit.OfflinePlayer;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
@@ -231,7 +229,7 @@ public interface VaultyEconomy {
      * @param  amount   description of parameter
      * @return         description of return value
      */
-     EconomyResponse withdrawPlayer(UUID uuid, BigDecimal amount);
+     VaultyResponse withdrawPlayer(UUID uuid, BigDecimal amount);
 
     /**
      * A description of the entire Java function.
@@ -240,7 +238,7 @@ public interface VaultyEconomy {
      * @param  amount   description of parameter
      * @return          description of return value
      */
-     CompletableFuture<EconomyResponse> withdrawPlayerAsync(UUID uuid, BigDecimal amount);
+     CompletableFuture<VaultyResponse> withdrawPlayerAsync(UUID uuid, BigDecimal amount);
 
     /**
      * A description of the entire Java function.
@@ -250,7 +248,7 @@ public interface VaultyEconomy {
      * @param  amount     description of parameter
      * @return            description of return value
      */
-     EconomyResponse withdrawPlayer(UUID uuid, String worldName, BigDecimal amount);
+     VaultyResponse withdrawPlayer(UUID uuid, String worldName, BigDecimal amount);
 
     /**
      * Withdraws a specified amount from a player's account asynchronously.
@@ -260,7 +258,7 @@ public interface VaultyEconomy {
      * @param  amount       the amount to be withdrawn
      * @return              a CompletableFuture that completes with an EconomyResponse object
      */
-     CompletableFuture<EconomyResponse> withdrawPlayerAsync(UUID uuid, String worldName, BigDecimal amount);
+     CompletableFuture<VaultyResponse> withdrawPlayerAsync(UUID uuid, String worldName, BigDecimal amount);
 
     /**
      * A description of the entire Java function.
@@ -269,7 +267,7 @@ public interface VaultyEconomy {
      * @param  amount  description of parameter
      * @return        description of return value
      */
-     EconomyResponse depositPlayer(UUID uuid, BigDecimal amount);
+     VaultyResponse depositPlayer(UUID uuid, BigDecimal amount);
 
     /**
      * Deposits a player's funds asynchronously.
@@ -278,7 +276,7 @@ public interface VaultyEconomy {
      * @param  amount  the amount of funds to deposit
      * @return         a CompletableFuture that will complete with an EconomyResponse
      */
-     CompletableFuture<EconomyResponse> depositPlayerAsync(UUID uuid, BigDecimal amount);
+     CompletableFuture<VaultyResponse> depositPlayerAsync(UUID uuid, BigDecimal amount);
 
     /**
      * Deposit a specified amount of money to the player's account.
@@ -288,7 +286,7 @@ public interface VaultyEconomy {
      * @param  amount     the amount of money to be deposited
      * @return            the response indicating the result of the deposit
      */
-     EconomyResponse depositPlayer(UUID uuid, String worldName, BigDecimal amount);
+     VaultyResponse depositPlayer(UUID uuid, String worldName, BigDecimal amount);
 
     /**
      * A description of the entire Java function.
@@ -298,7 +296,7 @@ public interface VaultyEconomy {
      * @param  amount      description of parameter
      * @return             description of return value
      */
-     CompletableFuture<EconomyResponse> depositPlayerAsync(UUID uuid, String worldName, BigDecimal amount);
+     CompletableFuture<VaultyResponse> depositPlayerAsync(UUID uuid, String worldName, BigDecimal amount);
 
     /**
      *
@@ -314,7 +312,7 @@ public interface VaultyEconomy {
      * @param  owner     the UUID of the owner
      * @return          an EconomyResponse object
      */
-     EconomyResponse createBank(UUID bankName, UUID owner);
+     VaultyResponse createBank(UUID bankName, UUID owner);
 
     /**
      * Delete a bank with the specified UUID.
@@ -322,7 +320,7 @@ public interface VaultyEconomy {
      * @param  bankName  the UUID of the bank to delete
      * @return           the response from the economy system after deleting the bank
      */
-     CompletableFuture<EconomyResponse> createBankAsync(UUID bankName, UUID owner);
+     CompletableFuture<VaultyResponse> createBankAsync(UUID bankName, UUID owner);
 
     /**
      * A description of the entire Java function.
@@ -330,7 +328,7 @@ public interface VaultyEconomy {
      * @param  bankName	description of parameter
      * @return         	description of return value
      */
-     EconomyResponse deleteBank(UUID bankName);
+     VaultyResponse deleteBank(UUID bankName);
 
     /**
      * A description of the entire Java function.
@@ -338,7 +336,7 @@ public interface VaultyEconomy {
      * @param  bankName	description of parameter
      * @return         	description of return value
      */
-     CompletableFuture<EconomyResponse> deleteBankAsync(UUID bankName);
+     CompletableFuture<VaultyResponse> deleteBankAsync(UUID bankName);
 
     /**
      * Check if the bank has the specified amount for the given bankName.
@@ -347,7 +345,7 @@ public interface VaultyEconomy {
      * @param  amount     the amount to check for
      * @return         	an EconomyResponse indicating if the bank has the specified amount
      */
-     EconomyResponse bankHas(UUID bankName, BigDecimal amount);
+     VaultyResponse bankHas(UUID bankName, BigDecimal amount);
 
     /**
      * Checks if the bank has a certain amount of money.
@@ -356,7 +354,7 @@ public interface VaultyEconomy {
      * @param  amount    the amount of money to check
      * @return           a CompletableFuture that will contain the EconomyResponse
      */
-     CompletableFuture<EconomyResponse> bankHasAsync(UUID bankName, BigDecimal amount);
+     CompletableFuture<VaultyResponse> bankHasAsync(UUID bankName, BigDecimal amount);
 
     /**
      * A description of the entire Java function.
@@ -365,7 +363,7 @@ public interface VaultyEconomy {
      * @param  amount    description of parameter
      * @return          description of return value
      */
-     EconomyResponse bankWithdraw(UUID bankName, BigDecimal amount);
+     VaultyResponse bankWithdraw(UUID bankName, BigDecimal amount);
 
     /**
      * A description of the entire Java function.
@@ -374,7 +372,7 @@ public interface VaultyEconomy {
      * @param  amount     description of parameter
      * @return            description of return value
      */
-     CompletableFuture<EconomyResponse> bankWithdrawAsync(UUID bankName, BigDecimal amount);
+     CompletableFuture<VaultyResponse> bankWithdrawAsync(UUID bankName, BigDecimal amount);
 
     /**
      * A description of the entire Java function.
@@ -383,7 +381,7 @@ public interface VaultyEconomy {
      * @param  amount	    description of parameter
      * @return         	description of return value
      */
-     EconomyResponse bankDeposit(UUID bankName, BigDecimal amount);
+     VaultyResponse bankDeposit(UUID bankName, BigDecimal amount);
 
     /**
      * Perform an asynchronous deposit to the specified bank.
@@ -392,7 +390,7 @@ public interface VaultyEconomy {
      * @param  amount     the amount to deposit
      * @return            a CompletableFuture representing the result of the deposit
      */
-     CompletableFuture<EconomyResponse> bankDepositAsync(UUID bankName, BigDecimal amount);
+     CompletableFuture<VaultyResponse> bankDepositAsync(UUID bankName, BigDecimal amount);
 
     /**
      * Retrieves the bank balance for a given bank name.
@@ -474,12 +472,12 @@ public interface VaultyEconomy {
 
     CompletableFuture<Boolean> virtualCurrenciesHasAsync(UUID playerName, String currencyID);
 
-    EconomyResponse virtualCurrenciesDeposit(UUID playerName, String currencyID, BigDecimal amount);
+    VaultyResponse virtualCurrenciesDeposit(UUID playerName, String currencyID, BigDecimal amount);
 
-    CompletableFuture<EconomyResponse> virtualCurrenciesDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
+    CompletableFuture<VaultyResponse> virtualCurrenciesDepositAsync(UUID playerName, String currencyID, BigDecimal amount);
 
-    EconomyResponse virtualCurrenciesWithdraw(UUID playerName, String currencyID, BigDecimal amount);
+    VaultyResponse virtualCurrenciesWithdraw(UUID playerName, String currencyID, BigDecimal amount);
 
-    CompletableFuture<EconomyResponse> virtualCurrenciesWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
+    CompletableFuture<VaultyResponse> virtualCurrenciesWithdrawAsync(UUID playerName, String currencyID, BigDecimal amount);
 
 }

@@ -7,8 +7,8 @@ package io.lightplugins.vaulty.api.economy;
  *                     outcomes
  * @param errorMessage Error message if the variable 'type' is ResponseType.FAILURE
  */
-public record EconomyResponse(double amount, double balance,
-                              EconomyResponse.ResponseType type, String errorMessage) {
+public record VaultyResponse(double amount, double balance,
+                             VaultyResponse.ResponseType type, String errorMessage) {
     /**
      * Enum for types of Responses indicating the status of a method call.
      */
@@ -36,7 +36,7 @@ public record EconomyResponse(double amount, double balance,
      * @param type         Success or failure type of the operation
      * @param errorMessage Error message if necessary (commonly null)
      */
-    public EconomyResponse {
+    public VaultyResponse {
     }
 
     /**

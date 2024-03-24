@@ -122,7 +122,7 @@ public void depositPlayerSomeMoney(UUID uuid, double amount) {
     BigDecimal depositAmount = new BigDecimal(amount);
     //  Here you can do some roundings or else.
 
-    EconomyResponse response = vaultyEcon.depositPlayer(uuid, depositAmount);
+    VaultyResponse response = vaultyEcon.depositPlayer(uuid, depositAmount);
     if(response.transactionSuccess()) {
         // Successfully deposited some money to the OfflinePlayer
     }
@@ -130,7 +130,7 @@ public void depositPlayerSomeMoney(UUID uuid, double amount) {
 
 public void withdrawPlayerSomeMoney(UUID uuid, BigDecimal amount) {
 
-    EconomyResponse response = vaultyEcon.withdrawPlayer(uuid, amount);
+    VaultyResponse response = vaultyEcon.withdrawPlayer(uuid, amount);
     if(response.transactionSuccess()) {
         // Successfully deposited some money to the OfflinePlayer
     }
@@ -149,7 +149,7 @@ public double getBalance(UUID uuid) {
 ```java
 public void depositPlayerSomeMoney(UUID uuid, BigDecimal amount) {
 
-    CompletableFuture<EconomyResponse> response = vaultyEcon.depositPlayerAsync(uuid, amount);
+    CompletableFuture<VaultyResponse> response = vaultyEcon.depositPlayerAsync(uuid, amount);
 
     response.thenApplyAsync(result -> {
         // you can modify the result if you wish here
